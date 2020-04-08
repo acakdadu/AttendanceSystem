@@ -7,3 +7,5 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+This project support everyone for fight to virus, social distancing about COVID-19 then this app unique features of our product take time and attendance software to the next level. 
+
