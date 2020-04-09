@@ -13,9 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('signin');
-});
-
 // Sign In Method
-Route::get('/signin', 'userController@signin');
+Route::get('/', 'userController@signin');
