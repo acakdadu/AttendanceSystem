@@ -18,4 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('karyawan', 'apiController@index');
+Route::get('employee', 'apiController@index');
+Route::get('employee/{emp_id}', 'apiController@show');
+Route::post('employee/addnew', 'apiController@store');
+Route::post('employee/update/{emp_id}', 'apiController@update');
+Route::post('employee/delete/{emp_id}', 'apiController@destroy');
