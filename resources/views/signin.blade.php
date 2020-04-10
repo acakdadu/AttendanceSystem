@@ -1,84 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
-    <meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="{{ asset('assets/images/favicon.svg') }}">
+  <title>AppName - Login</title>
+  
+  <link rel="icon" type="image/png" href="http://poscoictindonesia.co.id/img/icons/favicon.ico">
 
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('assets/libraries/bootstrap-4/css/bootstrap.min.css') }}">
-    
-    <!-- Font awesome 4 -->
-    <link rel="stylesheet" href="{{ asset('assets/libraries/font-awesome-4/css/font-awesome.min.css') }}">
-   
-    <!-- MyStyle -->
-    <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
+  <!-- Custom fonts for this template-->
+  <link href="{{ asset('sb2/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Only this Page -->
-    <link rel="stylesheet" href="{{ asset('assets/css/authentication.css') }}">
+  <!-- Custom styles for this template-->
+  <link href="{{ asset('sb2/css/sb-admin-2.css') }}" rel="stylesheet">
 
-    <title>Laravel</title>
-  </head>
-  <body>
+</head>
 
-    <div class="row no-gutters">
-      <div class="col-lg-4 no-gutters left d-flex justify-content-center align-items-center">
-      <!-- Images Banner -->
-      </div>
-      <div class="col-lg-8 no-gutters right">
-        <div class="h-100 row align-items-center no-gutters">
-          <div class="col-10 offset-1 col-lg-8 offset-lg-2">
-            
-            <h4 class="mb-5"><a href="#" class="text-decoration-none"><kbd>COVID-19.</kbd></a></h4>
-            <p>Welcome back,<br>
-            <span id="hiText">Please sign in to your account.</span></p>
-            
+<body class="bg-gradient-primary">
 
-            <form action="#" method="POST">
-              <hr class="mb-3">
-              <div class="form-row" id="formSignIn">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" name="username" maxlength="15" class="form-control form-control-sm" id="inputUsername" aria-describedby="usernameHelp">
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" name="password" class="form-control form-control-sm" id="inputPassword">
-                  </div>
+                  <form class="user">
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Code ID">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Enter Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                      </div>
+                    </div>
+                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                      Login
+                    </a>
+                    <hr>
+                    <h5 class="font-weight-bold">Covid-19. <kbd class="font-weight-light">update</kbd></h5>
+                    <div class="row mt-4">
+                      <div class="col text-center">
+                        <div class="card border-left-info shadow">
+                          <div class="card-body">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">ODP</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">78</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col text-center">
+                        <div class="card border-left-warning shadow">
+                          <div class="card-body">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">PDP</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">78</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col text-center">
+                        <div class="card border-left-danger shadow">
+                          <div class="card-body">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Positif</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                  <hr>
+                  <p>Data in Banten Area, source from <a href="#">covid19.go.id</a>. <br>Be awere for your health everyone, family, and friends. Social Distancing everywhere.</p>
                 </div>
               </div>
-              <div class="form-row" id="formRecover" style="display: none;">
-                <div class="col-lg-12">
-                  <div class="form-group">
-                    <label for="inputUsernameRecover">Username</label>
-                    <input type="text" name="usernameRecover" maxlength="25" class="form-control form-control-sm" id="inputUsernameRecover" aria-describedby="usernameRecoverHelp">
-                    <small id="usernameRecoverHelp" class="form-text text-muted mb-0">You'll get code for confirm to Administrator.</small>
-                  </div>
-                </div>
-              </div>
-              <hr class="mt-2">
-              <div class="text-right">
-                <button type="submit" class="btn btn-primary btn-sm" id="formSend">Login to Dashboard</button>
-              </div>
-            </form>
-
+            </div>
           </div>
         </div>
+
       </div>
+
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Bootstrap JS -->
-    <script src="{{ asset('assets/libraries/jquery-3/jquery-3.4.1.slim.min.js') }}"></script>
-    <script src="{{ asset('assets/libraries/bootstrap-4/js/bootstrap.min.js') }}"></script>
-    <script>
-    $(document).ready(function() {
-        console.log( "ready!" );
-    });
-    </script>
-  </body>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('sb2/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('sb2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset('sb2/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('sb2/js/sb-admin-2.min.js') }}"></script>
+
+</body>
+
 </html>

@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Welcome -> default signin
 Route::get('/', function () {
     return view('signin');
 });
+
+
+// Dashboard 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+	// Data
+	Route::get('/dashboard/employees', function () {
+    return view('employees');
+	});
+
 
 // Sign In Method
 Route::get('/signin', 'userController@signin');
