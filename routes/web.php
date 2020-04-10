@@ -28,6 +28,5 @@ Route::get('/dashboard', function () {
     return view('employees');
 	});
 
-
 // Sign In Method
-Route::get('/signin', 'userController@signin');
+Route::get('/', 'userController@signin');
