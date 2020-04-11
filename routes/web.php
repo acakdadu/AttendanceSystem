@@ -14,19 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Welcome -> default signin
-Route::get('/', function () {
-    return view('signin');
-});
-
-
-// Dashboard 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-	// Data
-	Route::get('/dashboard/employees', function () {
-    return view('employees');
-	});
-
+Route::get('/', 'userController@signin')->name('signin');
 // Sign In Method
-Route::get('/', 'userController@signin');
+Route::post('/', 'authController@signin');
+Route::get('/signout', 'authController@signout')->middleware('auth');
+
+
+// MiddleWare auth for Security
+Route::group(['MiddleWare' => ['auth']], function () {
+    // dashboard
+    Route::get('/dashboard', 'userController@dashboard');
+    // Data
+    Route::get('/dashboard/employees', 'userController@employees');
+});

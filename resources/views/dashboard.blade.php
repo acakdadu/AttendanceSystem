@@ -278,7 +278,7 @@
             <h4 class="alert-heading">On Progress!</h4>
             <p>Still waiting, everyone on updated healthy report daily check.</p>
           </div>
-          
+
           <div class="alert alert-danger mb-4" role="alert">
             <h4 class="alert-heading">Need rest or medical check!</h4>
             <p>Leave from home or another city go, employee or family leave from home, please confirmation details of reason.</p>
@@ -520,7 +520,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{ url('') }}">Logout</a>
+          <a class="btn btn-primary" href="signout">Logout</a>
         </div>
       </div>
     </div>
