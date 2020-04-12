@@ -297,46 +297,20 @@
                       </tr>
                     </tfoot>
                     <tbody>
-                      <tr>
-                        <td><a href="#" class="text-decoration-none text-muted">RUDI HIKMATULLAH R</a></td>
-                        <td>BUSINESS COMPUTER PROCESS</td>
-                        <td>PC</td>
-                        <td>BLAST FURNACE L2</td>
-                        <td>3</td>
-                        <td>TEAM MEMBER</td>
-                        <td class="text-center">6 MINUTES AGO</td>
-                        <td class="text-center text-success"><i class="fas fa-circle"></i></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" class="text-decoration-none text-muted">MEDIAN PRASETYA</a></td>
-                        <td>BUSINESS COMPUTER PROCESS</td>
-                        <td>PC</td>
-                        <td>PLATE MILL L2</td>
-                        <td>5</td>
-                        <td>TEAM MEMBER</td>
-                        <td class="text-center">52 MINUTES AGO</td>
-                        <td class="text-center text-success"><i class="fas fa-circle"></i></td>
-                      </tr>
-                      <tr style="background-color: #ffeeed;">
-                        <td><a href="#" class="text-decoration-none text-muted">PANGERAN CHARLIE</a></td>
-                        <td>BUSINESS COMPUTER PROCESS</td>
-                        <td>PC</td>
-                        <td>SINTER L2</td>
-                        <td>4</td>
-                        <td>TEAM MEMBER</td>
-                        <td class="text-center">6 DAYS AGO</td>
-                        <td class="text-center text-danger"><i class="fas fa-circle"></i></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" class="text-decoration-none text-muted">NADYA PUTRI HANDAYANI</a></td>
-                        <td>BUSINESS COMPUTER PROCESS</td>
-                        <td>PC</td>
-                        <td>COKE L2</td>
-                        <td>3</td>
-                        <td>TEAM MEMBER</td>
-                        <td class="text-center">2 HOURS AGO</td>
-                        <td class="text-center text-success"><i class="fas fa-circle"></i></td>
-                      </tr>
+                        @foreach ($dataemp as $dataemp)
+
+                        <tr>
+                            <td><a href="#" class="text-decoration-none text-muted">{{strtoupper($dataemp['name'])}}</a></td>
+                            <td>{{$dataemp['emp_id']}}</td>
+                            <td>{{$dataemp['team']}}</td>
+                            <td>{{$dataemp['plant']}}</td>
+                            <td>relasi belum di buat</td>
+                            <td>{{$dataemp['level']}}</td>
+                            <td class="text-center">6 MINUTES AGO</td>
+                            <td class="text-center text-success"><i class="fas fa-circle"></i></td>
+                        </tr>
+                        @endforeach
+
                       <tr>
                         <td><a href="#" class="text-decoration-none text-muted">MICHAEL SCOFIELD</a></td>
                         <td>BUSINESS COMPUTER PROCESS</td>

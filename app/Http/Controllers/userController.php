@@ -2,28 +2,22 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\User;
 
 class userController extends Controller
 {
 
-    // display view with data corona
-    public function signin()
-    {
-        $corona = Http::get('https://api.kawalcorona.com/indonesia/provinsi')[3];
-        // dd($corona);
-        return view('/signin', compact('corona'));
-    }
 
     public function dashboard()
     {
-        return view('/dashboard');
+        $totalemployee = User::all();
+        return view('/dashboard', (['totalemp' => $totalemployee]));
     }
 
     public function employees()
     {
-        return view('/employees');
+        $employee = User::all();
+        // $totalfamily = ;
+        return view('/employees', (['dataemp' => $employee]));
     }
 }

@@ -51,49 +51,37 @@
                                         {{-- Alert for failed!  --}}
                                         @if (session('alert'))
                                         <div class="alert alert-danger">{{ session('alert') }}</div>
-                                        @elseif (session('success'))
+                                        @endif
+                                        @if (session('success'))
                                         <div class="alert alert-success">{{ session('success') }}</div>
                                         @endif
 
-                                        <form class="user" method="post">
-                                            @csrf()
+                                        <form method="post" class="user">
+                                            @csrf
                                             <div class="form-group">
-                                                <input
-                                                    name="emp_id"
-                                                    value="{{old('emp_id')}}"
-                                                    type="text"
-                                                    class="form-control form-control-user @error('emp_id') is-invalid @enderror"
-                                                    id="exampleInputEmail"
-                                                    aria-describedby="emailHelp"
-                                                    placeholder="Enter Code ID">
-                                                    @error('emp_id')
+                                                <input name="emp_id" value="{{old('emp_id')}}" type="text" class="form-control form-control-user @error('emp_id') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Code ID">
+                                                    {{-- @error('emp_id')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                     @enderror
+                                                     @enderror --}}
                                             </div>
 
                                             <div class="form-group">
-                                                <input
-                                                    name="password"
-                                                    value="{{old('password')}}"
-                                                    type="password"
-                                                    class="form-control form-control-user @error('password') is-invalid @enderror"
-                                                    id="exampleInputPassword"
-                                                    placeholder="Enter Password">
-                                                    @error('password')
+                                                <input name="password" value="{{old('password')}}" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Enter Password">
+                                                    {{-- @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                     @enderror
+                                                     @enderror --}}
                                             </div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox small">
-                                                    <input name="remember" value="{{ old('remember') ? 'checked' : '' }}" type="checkbox" class="custom-control-input" id="customCheck">
+                                                    <input name="remember" value="{{ old('remember_token') ? 'checked' : '' }}" type="checkbox" class="custom-control-input" id="customCheck">
                                                     <label  class="custom-control-label" for="customCheck">Remember Me</label>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary btn-user btn-block">
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Login
                                             </button>
                                             <hr>

@@ -32,7 +32,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('')}}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-file-medical-alt"></i>
         </div>
@@ -44,7 +44,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -230,7 +230,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->emp_id}}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('assets/images/presdir.png') }}">
               </a>
               <!-- Dropdown - User Information -->
@@ -262,15 +262,22 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
-
-          <div class="alert alert-success mb-4" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            </div>
+            @if (session('success'))
+            <div class="alert alert-warning">{{ session('success') }}</div>
+            @endif
+            @if (session('alert'))
+            <div class="alert alert-info">{{ session('alert') }}</div>
+            @endif
+            @unless (Auth::check())
+                You are not signed in.
+            @endunless
+            <div class="alert alert-success mb-4" role="alert">
+            <h4 class="alert-heading">Well done! {{ (Auth::user()->name) }}</h4>
             <p>Aww yeah, looks good for report no late and everyone employees and family healthy.</p>
           </div>
 
@@ -320,7 +327,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Employees</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">37</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -337,7 +344,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Healthly Employees</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">32 of 35</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">32 of {{count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-heart fa-2x text-gray-300"></i>

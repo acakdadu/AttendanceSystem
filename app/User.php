@@ -2,25 +2,24 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    protected $table = 'mst_employee';
     use Notifiable;
-
-
+    protected $table = 'mst_employee';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'password', 'emp_id'
-    ];
+    // protected $guarded = '';
 
+    protected $fillable = [
+        'emp_id', 'password', 'name', 'company', 'department', 'team', 'level', 'created_at', 'updated_at'
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -29,7 +28,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
