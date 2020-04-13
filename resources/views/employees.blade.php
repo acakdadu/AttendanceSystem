@@ -274,6 +274,7 @@
                   <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
                       <tr>
+                          <th>No</th>
                           <th>Name</th>
                           <th>Department</th>
                           <th>Team</th>
@@ -286,6 +287,7 @@
                     </thead>
                     <tfoot>
                       <tr>
+                          <th>No</th>
                           <th>Name</th>
                           <th>Department</th>
                           <th>Team</th>
@@ -303,6 +305,7 @@
 
 
                         <tr>
+                            <td>{{$loop->iteration}}</td>
                             <td><a href="#" class="text-decoration-none text-muted">{{strtoupper($dataemp['name'])}}</a></td>
                             <td>{{$dataemp['department']}}</td>
                             <td>{{$dataemp['team']}}</td>

@@ -11,14 +11,14 @@ class userController extends Controller
 
     public function dashboard()
     {
-        $totalemployee = User::all();
-        return view('/dashboard', (['totalemp' => $totalemployee]));
+        $totalemp = User::all();
+        return view('/dashboard', (compact('totalemp')));
     }
 
     public function employees()
     {
-        $employee = User::all();
-        return view('/employees', (['dataemp' => $employee]));
+        $dataemp = User::all();
+        return view('/employees', (compact('dataemp')));
     }
 
 
