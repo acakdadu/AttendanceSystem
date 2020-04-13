@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function level(){
+        $memlevel = $this->level;
+        if ($memlevel == '0') {
+            return 'TEAM MEMBER 0';
+        }elseif ($memlevel == '1'){
+            return 'TEAM MEMBER 1';
+        }else {
+            return 'TEAM MEMBER 2';
+        }
+    }
+
 }

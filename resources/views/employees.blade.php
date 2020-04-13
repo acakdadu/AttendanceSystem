@@ -232,7 +232,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('assets/images/presdir.png') }}">
               </a>
               <!-- Dropdown - User Information -->
@@ -297,11 +297,14 @@
                       </tr>
                     </tfoot>
                     <tbody>
+
+
                         @foreach ($dataemp as $dataemp)
+
 
                         <tr>
                             <td><a href="#" class="text-decoration-none text-muted">{{strtoupper($dataemp['name'])}}</a></td>
-                            <td>{{$dataemp['emp_id']}}</td>
+                            <td>{{$dataemp['department']}}</td>
                             <td>{{$dataemp['team']}}</td>
                             <td>{{$dataemp['plant']}}</td>
                             <td>relasi belum di buat</td>
@@ -311,16 +314,6 @@
                         </tr>
                         @endforeach
 
-                      <tr>
-                        <td><a href="#" class="text-decoration-none text-muted">MICHAEL SCOFIELD</a></td>
-                        <td>BUSINESS COMPUTER PROCESS</td>
-                        <td>PC</td>
-                        <td>CCP L2</td>
-                        <td>2</td>
-                        <td>TEAM MEMBER</td>
-                        <td class="text-center">4 DAYS AGO</td>
-                        <td class="text-center text-warning"><i class="fas fa-circle"></i></td>
-                      </tr>
                     </tbody>
                   </table>
               </div>

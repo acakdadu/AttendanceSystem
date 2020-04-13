@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -17,7 +18,8 @@ class userController extends Controller
     public function employees()
     {
         $employee = User::all();
-        // $totalfamily = ;
         return view('/employees', (['dataemp' => $employee]));
     }
+
+
 }
