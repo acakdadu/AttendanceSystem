@@ -311,7 +311,23 @@
                             <td>{{$dataemp['team']}}</td>
                             <td>{{$dataemp['plant']}}</td>
                             <td>relasi belum di buat</td>
-                            <td>{{$dataemp['level']}}</td>
+                            <td>
+                            @if ( $dataemp->level == 0)
+                            TEAM MEMBER
+                            @elseif ( $dataemp->level == 1)
+                            GROUP LEADER
+                            @elseif ( $dataemp->level == 2)
+                            SECTION LEADER
+                            @elseif ( $dataemp->level == 3)
+                            JAM
+                            @elseif ( $dataemp->level == 4)
+                            TEAM LEADER
+                            @elseif ( $dataemp->level == 5)
+                            DEPT HEAD
+                            @endif
+
+
+                            </td>
                             <td class="text-center">6 MINUTES AGO</td>
                             <td class="text-center text-success"><i class="fas fa-circle"></i></td>
                         </tr>

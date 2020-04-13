@@ -457,6 +457,7 @@
                 </div>
                 <div class="card-body">
                   <ul class="m-0">
+
                     <li class="text-sm">Rudi Hikmatullah <span class="text-info">updated health for today</span> [2020-04-10 17:04:36]</li>
                     <li class="text-sm">Budiman Ananda <span class="text-info">updated health for today</span> [2020-04-10 17:04:36]</li>
                     <li class="text-sm">Median Setya Pra <span class="text-info">updated health for today</span> [2020-04-10 17:04:36]</li>
