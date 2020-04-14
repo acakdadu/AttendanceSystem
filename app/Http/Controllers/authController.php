@@ -17,7 +17,8 @@ class authController extends Controller
             $signout = "<a href='/signout'>Sign out</a>";
             return redirect('/dashboard')->with(['alert', 'Sorry, You already to sign in'], $signout);
         }
-        $corona = Http::get('https://api.kawalcorona.com/indonesia/provinsi')[3];
+        // $corona = Http::get('https://api.kawalcorona.com/indonesia/provinsi')[3];
+        $corona = null;
         // dd($corona);
         return view('/signin', compact('corona'));
     }
