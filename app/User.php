@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','created_at','update_at'
+        'password', 'remember_token', 'created_at', 'updated_at'
     ];
     /**
      * The attributes that should be cast to native types.
@@ -37,30 +37,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function level(){
+    public function level()
+    {
         $memlevel = $this->level;
         if ($memlevel == '0') {
             return 'TEAM MEMBER 0';
-        }elseif ($memlevel == '1'){
+        } elseif ($memlevel == '1') {
             return 'TEAM MEMBER 1';
-        }else {
+        } else {
             return 'TEAM MEMBER 2';
         }
     }
 
     public function Family()
     {
-        return $this->hasMany('App\Family', 'emp_id');
+        return $this->hasMany(Family::class, 'emp_id', 'emp_id');
     }
 
     public function FamilyReport()
     {
-        return $this->hasMany('App\FamilyReport');
+        return $this->hasMany(FamilyReport::class);
     }
 
     public function UserReport()
     {
         return $this->hasMany('App\UserReport');
     }
-
 }

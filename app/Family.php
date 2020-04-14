@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Family extends Model
 {
     protected $table = 'mst_family_member';
-    protected $fillable = ['name','relation'];
-    // protected $guarded = '';
+    // protected $fillable = ['name', 'relation'];
+    protected $guarded = [''];
     protected $hidden = [
-            'created_at','updated_at'
+        'emp_id', 'created_at', 'updated_at'
     ];
 
     public function User()
     {
-    return $this->belongsTo('App\User','emp_id');
+        return $this->belongsTo(User::class, 'emp_id', 'emp_id');
     }
 
 
-    public function FamilyReport(){
+    public function FamilyReport()
+    {
         return $this->hasMany('App\FamilyReport');
     }
 }

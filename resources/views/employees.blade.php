@@ -304,15 +304,22 @@
                         @foreach ($dataemp as $dataemp)
 
 
+
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td><a href="#" class="text-decoration-none text-muted">{{strtoupper($dataemp['name'])}}</a></td>
                             <td>{{$dataemp['department']}}</td>
                             <td>{{$dataemp['team']}}</td>
                             <td>{{$dataemp['plant']}}</td>
-                            <td>relasi belum di buat</td>
                             <td>
-                            @if ( $dataemp->level == 0)
+                                @foreach ($dataemp['family'] as $family)
+                                    <ul>
+                                        <li>{{ $family['name']}}</li>
+                                    </ul>
+                                @endforeach
+                        </td>
+                            <td>
+                                @if ( $dataemp->level == 0)
                             TEAM MEMBER
                             @elseif ( $dataemp->level == 1)
                             GL
@@ -335,7 +342,7 @@
 
                     </tbody>
                   </table>
-              </div>
+                </div>
             </div>
           </div>
 
