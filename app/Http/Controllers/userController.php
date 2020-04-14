@@ -11,6 +11,7 @@ class userController extends Controller
 
     public function dashboard()
     {
+
         $totalemp = User::all();
         $healthyemp_good = DB::table('tr_employee_reporting')
                                     ->where('report_time', 'like', date('Y-m-d').'%')
@@ -37,9 +38,9 @@ class userController extends Controller
 
     public function employees()
     {
-        $dataemp = User::all();
-        return view('/employees', (compact('dataemp')));
+        $dataemp = User::with(['Family'])->get();
+        $totalfamily = User::with(['Family'])->count();
+        // $dataemp = User::all();
+        return view('/employees', (compact(['dataemp', 'totalfamily'])));
     }
-
-
 }
