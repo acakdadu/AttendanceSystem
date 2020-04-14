@@ -315,15 +315,15 @@
                             @if ( $dataemp->level == 0)
                             TEAM MEMBER
                             @elseif ( $dataemp->level == 1)
-                            GROUP LEADER
+                            GL
                             @elseif ( $dataemp->level == 2)
-                            SECTION LEADER
+                            SL
                             @elseif ( $dataemp->level == 3)
                             JAM
                             @elseif ( $dataemp->level == 4)
-                            TEAM LEADER
+                            TL
                             @elseif ( $dataemp->level == 5)
-                            DEPT HEAD
+                            DH
                             @endif
 
 

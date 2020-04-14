@@ -18,7 +18,7 @@ class User extends Authenticatable
     // protected $guarded = '';
 
     protected $fillable = [
-        'emp_id', 'password', 'name', 'company', 'department', 'team', 'level', 'created_at', 'updated_at'
+        'emp_id', 'password', 'name', 'company', 'department', 'team', 'level'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','created_at','update_at'
     ];
     /**
      * The attributes that should be cast to native types.
@@ -46,6 +46,21 @@ class User extends Authenticatable
         }else {
             return 'TEAM MEMBER 2';
         }
+    }
+
+    public function Family()
+    {
+        return $this->hasMany('App\Family', 'emp_id');
+    }
+
+    public function FamilyReport()
+    {
+        return $this->hasMany('App\FamilyReport');
+    }
+
+    public function UserReport()
+    {
+        return $this->hasMany('App\UserReport');
     }
 
 }
