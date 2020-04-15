@@ -11,7 +11,7 @@ class userController extends Controller
 
     public function dashboard()
     {
-
+        // All Employee, data sick, healthy and report time
         $totalemp = User::all();
         $healthyemp_good = DB::table('tr_employee_reporting')
                                     ->where('report_time', 'like', date('Y-m-d').'%')
@@ -27,11 +27,10 @@ class userController extends Controller
                                           ->orWhere('flue', 1);
                                     })
                                     ->count();
-                                    
+
         $reportingemp = DB::table('tr_employee_reporting')->where('report_time', 'like', date('Y-m-d').'%')->count();
 
         $progress = number_format(round($reportingemp/count($totalemp) * 100,0),0);
-        
         // dd($progress);
         return view('/dashboard', (compact(['totalemp','healthyemp_sick', 'healthyemp_good', 'progress'])));
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Family;
+use App\UserReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,14 +35,15 @@ class apiController extends Controller
         //     ->orderBy('mst_employee.emp_id','DESC')
         //     ->get();
 
-        $conn = User::all();
-        // $conn = User::with(['Family'])->get();
+        // $conn = User::all();
+        $conn = User::with(['UserReport','Family'])
+        ->get();
 
         if ($conn) {
-            $status = [
+            $status = ([
                 'status' => '200 OK',
                 'response' => $conn
-            ];
+            ]);
         }
 
 
@@ -96,7 +98,42 @@ class apiController extends Controller
         return response()->json('Berhasil di hapus', 200);
     }
 
-    public function family()
-    {
-    }
+   public function empcheck(Request $request)
+   {
+    //    $me = UserReport::all();
+    //    if ($me)
+    //    $respon= ([
+    //            'status'=>'200 OK',
+    //             'response'=>$me]);
+    //    dd($me);
+
+    $find = DB::select('select * from tr_employee_reporting where emp_id = '. $request->emp_id. '');
+        if ($find == null) {
+            $mecheck = UserReport::create([
+                'emp_id' => $request->emp_id,
+                'cough' => $request->cough,
+                'fever' => $request->fever,
+                'flue' => $request->flue,
+                'temperature' => $request->temperature,
+                'visiting' => $request->visiting,
+                'gps_location' => $request->gps_location
+                ]);
+
+            if($mecheck){
+                $status = ([
+                        'response'=>201,
+                        'status'=>true
+                    ]);
+            }   $status = ([
+                'response'=>401,
+                'status'=>false
+                ]);
+            }
+
+            $status = ([
+                'response'=>500,
+                'Status'=>false
+                ]);
+            return response()->json($status);
+   }
 }

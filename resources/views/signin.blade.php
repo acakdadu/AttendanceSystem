@@ -93,7 +93,7 @@
 
 
                                         {{-- DATA CORONA --}}
-                                        {{-- @foreach ($corona as $corona) --}}
+                                        @foreach ($corona as $corona)
                                         <div class="row mt-4">
                                             <div class="col text-center">
                                                 <div class="card border-left-info shadow">
@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                         {{-- DATA CORONA --}}
 
                                         <hr>
