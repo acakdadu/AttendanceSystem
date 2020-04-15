@@ -271,18 +271,18 @@
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <table class="table table-bordered dataTable" id="dataTable" width="50%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
-                      <tr>
+                      <tr class="text-center">
                           <th>No</th>
                           <th>Name</th>
                           <th>Department</th>
                           <th>Team</th>
                           <th>Plant</th>
-                          <th>Number of families</th>
+                          <th>Families</th>
                           <th>Position</th>
-                          <th class="text-center">Last Active</th>
-                          <th class="text-center">Condition</th>
+                          <th>Last Active</th>
+                          <th>Condition</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -292,7 +292,7 @@
                           <th>Department</th>
                           <th>Team</th>
                           <th>Plant</th>
-                          <th>Number of families</th>
+                          <th>family</th>
                           <th>Position</th>
                           <th class="text-center">Last Active</th>
                           <th class="text-center">Condition</th>
@@ -312,15 +312,15 @@
                             <td>{{$dataemp['team']}}</td>
                             <td>{{$dataemp['plant']}}</td>
                             <td>
+                                <ul >
                                 @foreach ($dataemp['family'] as $family)
-                                    <ul>
-                                        <li>{{ $family['name']}}</li>
+                                        <li><span class="badge badge-primary col-5"> {{($family['relation'])}}</span> {{ $family['name']}}</li>
+                                        @endforeach
                                     </ul>
-                                @endforeach
                         </td>
                             <td>
                                 @if ( $dataemp->level == 0)
-                            TEAM MEMBER
+                            TM
                             @elseif ( $dataemp->level == 1)
                             GL
                             @elseif ( $dataemp->level == 2)
@@ -335,7 +335,7 @@
 
 
                             </td>
-                            <td class="text-center">6 MINUTES AGO</td>
+                            <td class="text-center">-</td>
                             <td class="text-center text-success"><i class="fas fa-circle"></i></td>
                         </tr>
                         @endforeach

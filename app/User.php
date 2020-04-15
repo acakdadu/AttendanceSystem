@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     protected $table = 'mst_employee';
+    protected $primaryKey = 'emp_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -56,11 +58,11 @@ class User extends Authenticatable
 
     public function FamilyReport()
     {
-        return $this->hasMany(FamilyReport::class, 'emp_id','emp_id');
+        return $this->hasMany(FamilyReport::class, 'emp_id', 'emp_id');
     }
 
     public function UserReport()
     {
-        return $this->hasMany('App\UserReport','emp_id','emp_id');
+        return $this->hasMany(UserReport::class, 'emp_id', 'emp_id');
     }
 }

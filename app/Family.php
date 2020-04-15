@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Family extends Model
 {
     protected $table = 'mst_family_member';
+    protected $primarykey = ['emp_id', 'name'];
     // protected $fillable = ['name', 'relation'];
     protected $guarded = [''];
     protected $hidden = [
@@ -18,9 +19,8 @@ class Family extends Model
         return $this->belongsTo(User::class, 'emp_id', 'emp_id');
     }
 
-
     public function FamilyReport()
     {
-        return $this->hasMany('App\FamilyReport');
+        return $this->hasMany(FamilyReport::class, 'emp_id', 'emp_id');
     }
 }

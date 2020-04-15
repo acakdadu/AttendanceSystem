@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Family;
 use App\UserReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +35,8 @@ class apiController extends Controller
         //     ->get();
 
         // $conn = User::all();
-        $conn = User::with(['UserReport','Family'])
-        ->get();
+        $conn = User::with(['UserReport', 'Family'])
+            ->get();
 
         if ($conn) {
             $status = ([
@@ -69,7 +68,7 @@ class apiController extends Controller
     //    Show data employe order by emp_id
     public function show(User $user, $emp_id)
     {
-        $getemp = DB::table('mst_employee')
+        $getemp = User::with(['UserReport', 'Family'])
             ->where('emp_id', $emp_id)
             ->get();
         return response()->json($getemp, 200);
@@ -98,42 +97,37 @@ class apiController extends Controller
         return response()->json('Berhasil di hapus', 200);
     }
 
-   public function empcheck(Request $request)
-   {
-    //    $me = UserReport::all();
-    //    if ($me)
-    //    $respon= ([
-    //            'status'=>'200 OK',
-    //             'response'=>$me]);
-    //    dd($me);
 
-    $find = DB::select('select * from tr_employee_reporting where emp_id = '. $request->emp_id. '');
-        if ($find == null) {
-            $mecheck = UserReport::create([
+    // check employee add
+    public function empcheck(Request $request)
+    {
+        $get_check = UserReport::updateOrCreate(
+
+            [
                 'emp_id' => $request->emp_id,
+                'report_time' => date('Y-m-d'), //1 hari sekali, selain itu di update
+
+            ],
+            [
                 'cough' => $request->cough,
                 'fever' => $request->fever,
                 'flue' => $request->flue,
                 'temperature' => $request->temperature,
                 'visiting' => $request->visiting,
-                'gps_location' => $request->gps_location
-                ]);
+                'gps_location' => $request->gps_location,
+            ]
 
-            if($mecheck){
-                $status = ([
-                        'response'=>201,
-                        'status'=>true
-                    ]);
-            }   $status = ([
-                'response'=>401,
-                'status'=>false
-                ]);
-            }
+        );
 
-            $status = ([
-                'response'=>500,
-                'Status'=>false
-                ]);
-            return response()->json($status);
-   }
+        return response()->json($get_check, 200);
+    }
+
+    // check employee view
+    public function empcheckshow($emp_id)
+    {
+        $getemp = UserReport::with(['User'])
+            ->where('emp_id', $emp_id)
+            ->get();
+        return response()->json($getemp, 200);
+    }
 }
