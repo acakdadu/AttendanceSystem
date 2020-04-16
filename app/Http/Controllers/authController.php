@@ -15,7 +15,7 @@ class authController extends Controller
     {
         if (Auth::check()) {
             $signout = "<a href='/signout'>Sign out</a>";
-            return redirect('/dashboard')->with(['alert', 'Sorry, You already to sign in'], $signout);
+            return redirect('/dashboard')->with(['alert', 'Sorry, You already to Sign in'], $signout);
         }
         $corona = Http::get('https://api.kawalcorona.com/indonesia/provinsi')[4];
         // $corona = null;
