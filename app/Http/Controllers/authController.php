@@ -42,6 +42,6 @@ class authController extends Controller
     public function signout(Request $request)
     {
         Auth::logout();
-        return redirect('/')->with('success', 'Logout Success!');
+        return redirect('/')->with('success', 'Logout Success !');
     }
 }

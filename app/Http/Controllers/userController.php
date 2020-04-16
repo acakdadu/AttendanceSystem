@@ -42,4 +42,23 @@ class userController extends Controller
         // $dataemp = User::all();
         return view('/employees', (compact(['dataemp', 'totalfamily'])));
     }
+
+    // GENEREATE RESET PASSWORD => EMPM_ID
+    public function generate()
+    {
+        // cara 1
+        // $userx = User::where('emp_id', 'LIKE', 11 . '%')->get();
+        // // dd($user);
+        // $userx = User::all();
+        // foreach ($userx as $user) {
+        //     $user->password = bcrypt($user->emp_id);
+        //     $user->save();
+        //     return response()->json('Success change Password to Default! ', 200);
+        // }
+
+        // cara2
+        $user =       DB::table('mst_employee')->where(DB::raw('emp_id'), 'LIKE', 1124213 . '%')
+            ->update(['password' => 'emp_id']);
+        return response()->json('Success Reset ' . $user . ' User');
+    }
 }
