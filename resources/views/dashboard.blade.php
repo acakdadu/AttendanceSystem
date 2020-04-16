@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,7 +266,32 @@
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
+<<<<<<< HEAD
           
+=======
+
+            @if ($progress == 100)
+            <div class="alert alert-success mb-4" role="alert">
+              <h4 class="alert-heading">Well done! {{ (Auth::user()->name) }}</h4>
+              <p>Aww yeah, looks good for report no late and everyone employees and family healthy.</p>
+            </div>
+            @endif
+
+            @if ($progress < 100 && $healthyemp_sick == 0)
+            <div class="alert alert-warning mb-4" role="alert">
+              <h4 class="alert-heading">On Progress!</h4>
+              <p>Still waiting, everyone on updated healthy report daily check.</p>
+            </div>
+            @endif
+
+            @if ($healthyemp_sick > 0)
+            <div class="alert alert-danger mb-4" role="alert">
+              <h4 class="alert-heading">Need rest or medical check!</h4>
+              <p>Leave from home or another city go, employee or family leave from home, please confirmation details of reason.</p>
+            </div>
+            @endif
+
+>>>>>>> d8e64c2c000e8f1872b6f286a6edab2616ff2991
           <!-- Content Row -->
           <div class="row">
 

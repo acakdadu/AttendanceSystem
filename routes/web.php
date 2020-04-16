@@ -8,6 +8,9 @@ Route::get('/', 'authController@sign')->name('login');
 Route::post('/', 'authController@signin');
 Route::get('/signout', 'authController@signout')->middleware('auth');
 
+// generate password to emp_id
+Route::get('/genpass', 'userController@generate');
+
 
 Route::group(['middleware' => 'auth'], function () {
     // dashboard
