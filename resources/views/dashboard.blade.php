@@ -267,33 +267,128 @@
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
-              
-            @if ($progress == 100)
-            <div class="alert alert-success mb-4" role="alert">
-              <h4 class="alert-heading">Well done! {{ (Auth::user()->name) }}</h4>
-              <p>Aww yeah, looks good for report no late and everyone employees and family healthy.</p>
-            </div>
-            @endif
-
-            @if ($progress < 100 && $healthyemp_sick == 0)
-            <div class="alert alert-warning mb-4" role="alert">
-              <h4 class="alert-heading">On Progress!</h4>
-              <p>Still waiting, everyone on updated healthy report daily check.</p>
-            </div>
-            @endif
-
-            @if ($healthyemp_sick > 0)
-            <div class="alert alert-danger mb-4" role="alert">
-              <h4 class="alert-heading">Need rest or medical check!</h4>
-              <p>Leave from home or another city go, employee or family leave from home, please confirmation details of reason.</p>
-            </div>
-            @endif
-
+          
           <!-- Content Row -->
           <div class="row">
 
+            <!-- Filter by Date -->
+            <div class="col-md-12 mb-2">
+              <div class="card shadow">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-muted" id="filterSet" style="cursor: pointer;">Filter by Date <i class="fas fa-chevron-circle-down"></i></h6>
+                </div>
+                <div class="card-body" style="display: none" id="filterForm">
+                  
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Company</label>
+                        <select class="custom-select" disabled>
+                          <option value="ict">PT POSCO ICT-INDONESIA</option>
+                        </select>
+                        <small id="emailHelp" class="form-text text-muted">Department will be updated after selected.</small>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <label for="exampleInputPassword1">Department:</label>
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" disabled>
+                          <label class="custom-control-label" for="customCheck1">Facility Control</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
+                          <label class="custom-control-label" for="customCheck2">Central Maintenance</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck3" checked onclick="return false;"/>
+                          <label class="custom-control-label" for="customCheck3">Business Process Computer</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-row">
+                        <div class="col">
+                          <label for="inputEmail4">Start Date</label>
+                          <input type="date" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                          <label for="inputEmail4">End Date</label>
+                          <input type="date" class="form-control" placeholder="Last name">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group mt-2">
+                        <label for="exampleInputPassword1">Filter Days Type:</label>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                          <label class="custom-control-label" for="customSwitch1">Including Weekends</label>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                    <button type="submit" class="btn btn-block btn-success">Apply</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Healthly Employees (Today)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_good }} of {{count($totalemp)}}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-heart fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employees (Today)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_sick }} of {{count($totalemp)}}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clinic-medical fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Leave Home (Today)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">12 of 424</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-car-side fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -316,41 +411,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Healthly Employees (Daily)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_good }} of {{count($totalemp)}}</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-heart fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employees (Daily)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_sick }} of {{count($totalemp)}}</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clinic-medical fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div> -->
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -373,6 +434,20 @@
 
           <!-- Content Row -->
           <div class="row">
+
+            <!-- <div class="col-lg-12 mb-4">
+              <div class="card shadow">
+                <div class="card-body">
+                  <div class="progress" style="height: 1px;">
+                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="progress mt-2" style="height: 20px;">
+                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">27%</div>
+                  </div>
+                  <code class="text-muted m-0 mt-2">Data Submitted Progress</code>
+                </div>
+              </div>
+            </div> -->
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
@@ -471,12 +546,12 @@
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('sb2/js/sb-admin-2.min.js') }}"></script>
 
-  <!-- Page level plugins -->
-  <script src="{{ asset('sb2/vendor/chart.js/Chart.min.js') }}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{ asset('sb2/js/demo/chart-area-demo.js') }}"></script>
-  <script src="{{ asset('sb2/js/demo/chart-pie-demo.js') }}"></script>
-
+  <script>
+    $('#filterSet').click(function(e){
+      $('#filterForm').slideToggle();
+      $("i", this).toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
+      // $("i", this).removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up");
+    });
+  </script>
 </body>
 </html>
