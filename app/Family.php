@@ -14,6 +14,7 @@ class Family extends Model
         'emp_id', 'created_at', 'updated_at'
     ];
 
+
     public function User()
     {
         return $this->belongsTo(User::class, 'emp_id', 'emp_id');
@@ -21,6 +22,6 @@ class Family extends Model
 
     public function FamilyReport()
     {
-        return $this->hasMany(FamilyReport::class, 'emp_id', 'emp_id');
+        return $this->hasMany(FamilyReport::class, 'emp_id', 'name');
     }
 }

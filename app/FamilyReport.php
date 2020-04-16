@@ -10,6 +10,8 @@ class FamilyReport extends Model
     protected $table = 'tr_family_member_reporting';
     protected $guarded = [''];
 
+    protected $hidden =['emp_id','created_at','updated_at'];
+
     public function User()
     {
         return $this->belongsTo(User::class, 'emp_id', 'emp_id');
@@ -19,4 +21,5 @@ class FamilyReport extends Model
     {
         return $this->belongsTo(Family::class, 'emp_id', 'emp_id');
     }
+
 }

@@ -65,4 +65,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserReport::class, 'emp_id', 'emp_id');
     }
+
 }

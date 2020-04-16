@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FamilyReport;
 use App\User;
 use App\UserReport;
 use Illuminate\Http\Request;
@@ -44,8 +45,6 @@ class apiController extends Controller
                 'response' => $conn
             ]);
         }
-
-
         return response()->json($status);
     }
 
@@ -59,7 +58,7 @@ class apiController extends Controller
             'department' => $request->department,
             'team' => $request->team,
             'plant' => $request->plant,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'level' => $request->level
         ]);
         return response()->json('Berhasil Menambahkan Pegawai', 201);
@@ -68,7 +67,7 @@ class apiController extends Controller
     //    Show data employe order by emp_id
     public function show(User $user, $emp_id)
     {
-        $getemp = User::with(['UserReport', 'Family'])
+        $getemp = User::with(['UserReport', 'Family','FamilyReport'])
             ->where('emp_id', $emp_id)
             ->get();
         return response()->json($getemp, 200);
@@ -97,16 +96,13 @@ class apiController extends Controller
         return response()->json('Berhasil di hapus', 200);
     }
 
-
     // check employee add
     public function empcheck(Request $request)
     {
         $get_check = UserReport::updateOrCreate(
-
             [
                 'emp_id' => $request->emp_id,
-                'report_time' => date('Y-m-d'), //1 hari sekali, selain itu di update
-
+                'report_time' => date('Y-m-d'), //1 hari sekali, selain itu di update. nanti get data kapan dia updatenya pake updated_at
             ],
             [
                 'cough' => $request->cough,
@@ -116,10 +112,12 @@ class apiController extends Controller
                 'visiting' => $request->visiting,
                 'gps_location' => $request->gps_location,
             ]
-
         );
 
-        return response()->json($get_check, 200);
+        if (!$get_check) {
+               return response()->json(['Error' => 'Record Error, Try Again!'], 401);
+            }
+            return response()->json(['Success' => 'Record Succesfully!'], 201);
     }
 
     // check employee view
@@ -130,4 +128,42 @@ class apiController extends Controller
             ->get();
         return response()->json($getemp, 200);
     }
+
+     // Family's symptomp new
+     public function famcheck(Request $request)
+     {
+         $get_check = FamilyReport::updateOrCreate(
+             [
+                 'emp_id' => $request->emp_id,
+                 'name' => $request->name,
+                 'time_reporting' => date('Y-m-d'), //1 hari sekali, selain itu di update. nanti get data kapan dia updatenya pake updated_at
+             ],
+             [
+                 'cough' => $request->cough,
+                 'fever' => $request->fever,
+                 'flue' => $request->flue,
+                 'temperature' => $request->temperature,
+                 'visiting' => $request->visiting,
+             ]
+         );
+
+         if (!$get_check) {
+                return response()->json(['Error' => 'Record Error, Try Again!'], 401);
+             }
+             return response()->json(['Success' => 'Record Succesfully!'], 201);
+     }
+
+
+     // View Symptom Family's Employe
+     public function famcheckshow($emp_id)
+     {
+         $getemp = FamilyReport::find($emp_id)
+         ->with(['User'])
+         ->get();
+         return response()->json($getemp, 200);
+     }
+
+
+
+
 }
