@@ -47,18 +47,18 @@ class userController extends Controller
     public function generate()
     {
         // cara 1
-        // $userx = User::where('emp_id', 'LIKE', 11 . '%')->get();
-        // // dd($user);
+        $userx = User::where('department', 'LIKE', 'BPC' . '%')->get();
+        // dd($userx);
         // $userx = User::all();
-        // foreach ($userx as $user) {
-        //     $user->password = bcrypt($user->emp_id);
-        //     $user->save();
-        //     return response()->json('Success change Password to Default! ', 200);
-        // }
+        foreach ($userx as $user) {
+            $user->password = bcrypt($user->emp_id);
+            $user->save();
+            return redirect('/dashboard')->with('success', 'Success change Password to Default!');
+        }
 
         // cara2
-        $user =       DB::table('mst_employee')->where(DB::raw('emp_id'), 'LIKE', 1124213 . '%')
-            ->update(['password' => 'emp_id']);
-        return response()->json('Success Reset ' . $user . ' User');
+        // $user =       DB::table('mst_employee')->where(DB::raw('emp_id'), 'LIKE', 101511 . '%')
+        //     ->update(['password' => '']);
+        // return response()->json('Success Reset ' . $user . ' User');
     }
 }
