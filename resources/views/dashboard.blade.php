@@ -119,109 +119,8 @@
               </div>
             </li>
 
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
+            <li class="align-middle py-4">
+              <img src="{{ asset('assets/images/withposco.gif')}}" alt="With Posco Icon" width="120">
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -234,14 +133,6 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
@@ -261,12 +152,6 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-            </div>
-
           <!-- Content Row -->
           <div class="row">
 
@@ -288,20 +173,37 @@
                         <small id="emailHelp" class="form-text text-muted">Department will be updated after selected.</small>
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2">
                       <label for="exampleInputPassword1">Department:</label>
                       <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck1" disabled>
-                          <label class="custom-control-label" for="customCheck1">Facility Control</label>
-                        </div>
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
                           <label class="custom-control-label" for="customCheck2">Central Maintenance</label>
                         </div>
                         <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" disabled>
+                          <label class="custom-control-label" for="customCheck1">Facility Control</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="customCheck3" checked onclick="return false;"/>
-                          <label class="custom-control-label" for="customCheck3">Business Process Computer</label>
+                          <label class="custom-control-label" for="customCheck3">IT</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2">
+                      <label for="exampleInputPassword1">Team:</label>
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customChe" checked> 
+                          <label class="custom-control-label" for="customChe">Infra</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="ASDASD" checked>
+                          <label class="custom-control-label" for="ASDASD">MES</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="fddsf" checked>
+                          <label class="custom-control-label" for="fddsf">PC</label>
                         </div>
                       </div>
                     </div>
@@ -324,9 +226,6 @@
                           <label class="custom-control-label" for="customSwitch1">Including Weekends</label>
                         </div>
                       </div>
-
-
-
                     </div>
                     <button type="submit" class="btn btn-block btn-success">Apply</button>
 
@@ -433,6 +332,88 @@
 
           <!-- Content Row -->
           <div class="row">
+
+            <div class="col-md-12 mb-4">
+              <div class="card shadow">
+                <div class="card-body overflow-auto">
+                  <h5 class="text-center mb-4 text-dark"><i class="fas fa-list-alt"></i> Health condition and Visit place of Employees and Families</h5>
+                  <table class="table table-bordered table-sm text-dark ">
+                    <thead>
+                      <tr style="background: #E5F8FF">
+                        <th scope="col" class="text-center align-middle" rowspan="2" width="25%">Team</th>
+                        <th scope="col" class="text-center align-middle" rowspan="2">Submit</th>
+                        <th scope="col" class="text-center align-middle" rowspan="2">No Employees</th>
+                        <th scope="col" class="text-center align-middle" rowspan="2">No. Family</th>
+                        <th scope="col" class="text-center align-middle" colspan="3">Health (KP)</th>
+                        <th scope="col" class="text-center align-middle" rowspan="2">Visit to other city</th>
+                        <th scope="col" class="text-center align-middle" colspan="3">Health (Familty)</th>
+                        <th scope="col" class="text-center align-middle" rowspan="2">Visit to other city</th>
+                      </tr>
+                      <tr style="background: #CCF2FF">
+                        <th scope="col" class="text-center align-middle">Fever</th>
+                        <th scope="col" class="text-center align-middle">Cough</th>
+                        <th scope="col" class="text-center align-middle">Flu</th>
+                        <th scope="col" class="text-center align-middle">Fever</th>
+                        <th scope="col" class="text-center align-middle">Cough</th>
+                        <th scope="col" class="text-center align-middle">Flu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="#" class="text-dark">INFRA</a></th>
+                        <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#" class="text-dark">IT</a></th>
+                        <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#" class="text-dark">MES</a></th>
+                        <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="font-italic text-info">*Last updated: 23:50 17/04/2020</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export to Excel</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- <div class="col-lg-12 mb-4">
               <div class="card shadow">
