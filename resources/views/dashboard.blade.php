@@ -162,7 +162,7 @@
                   <h6 class="m-0 font-weight-bold text-dark" id="filterSet" style="cursor: pointer;">Filter by Date <span class="font-weight-normal"><!-- (14-04-2020 ~ 18-04-2020) --></span> <i class="fas fa-chevron-circle-down"></i></h6>
                 </div>
                 <div class="card-body" style="display: none" id="filterForm">
-                  
+
                   <div class="row">
                     <div class="col-lg-4">
                       <div class="form-group">
@@ -194,7 +194,7 @@
                       <label for="exampleInputPassword1">Team:</label>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input teamChecks" id="checkInfra" checkeda> 
+                          <input type="checkbox" class="custom-control-input teamChecks" id="checkInfra" checkeda>
                           <label class="custom-control-label" for="checkInfra">Infra</label>
                         </div>
                         <div class="custom-control custom-checkbox">
@@ -218,7 +218,7 @@
                           <input type="date" class="form-control rangeDate" id="endDate">
                         </div>
                       </div>
-                      
+
                       <div class="form-group mt-2">
                         <label for="exampleInputPassword1">Filter Days Type:</label>
                         <div class="custom-control custom-switch">
@@ -233,7 +233,7 @@
 
                 </div>
               </div>
-<!-- 
+<!--
               <div class="alert alert-secondary mt-3" role="alert">
                 <h4 class="alert-heading">Sorry, Nothing Data!</h4>
                 <p>Please check at your filter date, maybe have a small wrong.</p>
@@ -326,7 +326,7 @@
                   <code class="text-right m-0 mt-1 mb-3 text-muted d-block">On Progress ..</code>
                   <table class="table table-bordered table-sm text-dark ">
                     <thead>
-                      <tr style="background: #E5F8FF"> 
+                      <tr style="background: #E5F8FF">
                         <th scope="col" class="text-center align-middle" rowspan="2" width="25%">Team</th>
                         <th scope="col" class="text-center align-middle" rowspan="2">Submit</th>
                         <th scope="col" class="text-center align-middle" rowspan="2">No Employees</th>
@@ -541,7 +541,7 @@
       $('#loadPage').text('Memuat ...');
       $.get("{{ url('dashboard/healthempdetail/') }}/" + $(this).attr('page') , function(html_string){
          $('#loadPage').html(html_string);
-      },'html'); 
+      },'html');
     });
 
   </script>

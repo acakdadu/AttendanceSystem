@@ -18,6 +18,7 @@ class authController extends Controller
             return redirect('/dashboard')->with(['alert', 'Sorry, You already to Sign in'], $signout);
         }
         $corona = Http::get('https://api.kawalcorona.com/indonesia/provinsi')[4];
+        // dd($corona);
         return view('/signin', compact('corona'));
     }
 
