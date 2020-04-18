@@ -44,7 +44,6 @@
                 
                 <td class="text-center">{{$total_family}}</td>
 
-<<<<<<< HEAD
             <td class="text-center align-middle" style="font-size: 12px;">
                 @if ($report_status == 1 )
                 <i class="far fa-circle"></i>
@@ -54,38 +53,6 @@
             </td>
 
             <td class="text-center">{{$total_family}}</td>
-=======
-                @foreach ($team['UserReport'] as $userreport)
-                <td class="text-center">
-                    @if ($userreport['fever'] == 1 )
-                    <span class="bg-danger">Yes</span>
-                    @else
-                    <span class="bg-success">No</span>
-                    @endif
-                </td>
-                <td class="text-center">
-                    @if ($userreport['cough'] == 1 )
-                    <span class="bg-danger">Yes</span>
-                    @else
-                    <span class="bg-success">No</span>
-                    @endif
-                </td>
-                <td class="text-center">
-                    @if ($userreport['flue'] == 1 )
-                    <span class="bg-danger">Yes</span>
-                    @else
-                    <span class="bg-success">No</span>
-                    @endif
-                </td>
-                    <td class="text-center">
-                    @if ($userreport['visit_oth_city'] == 1 )
-                    <span class="bg-danger">Yes</span>
-                    @else
-                    <span class="bg-success">No</span>
-                    @endif
-                </td>
-                @endforeach
->>>>>>> eb260739c7ae19e45667704221a0c3044402d4c6
 
                 @foreach ($team['FamilyReport'] as $familyreport)
                 <td class="text-center">
