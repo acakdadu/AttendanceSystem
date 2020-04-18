@@ -1,6 +1,6 @@
     <div class="text-center">
         <h5 class="text-dark"><i class="fas fa-list-alt"></i> Health condition and Visit place of Employees and Families</h5>
-        <h6 class="mb-4 text-dark">Infra (31 Employees)</h6>
+        <h6 class="mb-4 text-dark">{{ strtoupper($page) }} (31 Employees)</h6>
     </div>
     <table class="table table-bordered table-sm text-dark ">
     <thead>

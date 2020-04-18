@@ -35,9 +35,9 @@ class userController extends Controller
         return view('/dashboard', (compact(['totalemp', 'healthyemp_sick', 'healthyemp_good', 'progress'])));
     }
 
-    public function healthempdetail()
+    public function healthempdetail($call)
     {
-        return view('/detail_health');
+        return view('/detail_health', ["page"=>$call]);
     }
 
     public function employees()

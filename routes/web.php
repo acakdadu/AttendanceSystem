@@ -16,7 +16,7 @@ Route::group(['middleware' => 'auth'], function () {
     // dashboard
     Route::get('/dashboard', 'userController@dashboard');
     // dashboard detail team
-    Route::get('/dashboard/healthempdetail', 'userController@healthempdetail');
+    Route::get('/dashboard/healthempdetail/{call}', 'userController@healthempdetail');
     // Data
     Route::get('/dashboard/employees', 'userController@employees');
     // Data

@@ -347,7 +347,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark detail">INFRA</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail" page="infra">INFRA</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -361,7 +361,7 @@
                         <td class="text-center">0</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark detail">PC</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail" page="pc">PC</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -375,7 +375,7 @@
                         <td class="text-center">0</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark detail">MES</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail" page="mes">MES</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -539,7 +539,7 @@
     $('.detail').click(function(e){
       e.preventDefault();
       $('#loadPage').text('Memuat ...');
-      $.get("{{ url('dashboard/healthempdetail') }}", function(html_string){
+      $.get("{{ url('dashboard/healthempdetail/') }}/" + $(this).attr('page') , function(html_string){
          $('#loadPage').html(html_string);
       },'html'); 
     });
