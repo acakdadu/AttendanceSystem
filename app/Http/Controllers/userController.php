@@ -35,6 +35,11 @@ class userController extends Controller
         return view('/dashboard', (compact(['totalemp', 'healthyemp_sick', 'healthyemp_good', 'progress'])));
     }
 
+    public function healthempdetail()
+    {
+        return view('/detail_health');
+    }
+
     public function employees()
     {
         $dataemp = User::with(['Family'])->get();

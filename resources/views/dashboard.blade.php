@@ -158,8 +158,8 @@
             <!-- Filter by Date -->
             <div class="col-md-12 mb-2">
               <div class="card shadow">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-muted" id="filterSet" style="cursor: pointer;">Filter by Date <i class="fas fa-chevron-circle-down"></i></h6>
+                <div class="card-header py-3" > <!-- style="background-color: #ffeaa7" -->
+                  <h6 class="m-0 font-weight-bold text-dark" id="filterSet" style="cursor: pointer;">Filter by Date <span class="font-weight-normal"><!-- (14-04-2020 ~ 18-04-2020) --></span> <i class="fas fa-chevron-circle-down"></i></h6>
                 </div>
                 <div class="card-body" style="display: none" id="filterForm">
                   
@@ -194,16 +194,16 @@
                       <label for="exampleInputPassword1">Team:</label>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customChe" checked> 
-                          <label class="custom-control-label" for="customChe">Infra</label>
+                          <input type="checkbox" class="custom-control-input teamChecks" id="checkInfra" checkeda> 
+                          <label class="custom-control-label" for="checkInfra">Infra</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="ASDASD" checked>
-                          <label class="custom-control-label" for="ASDASD">MES</label>
+                          <input type="checkbox" class="custom-control-input teamChecks" id="checkMes" checkeda>
+                          <label class="custom-control-label" for="checkMes">MES</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="fddsf" checked>
-                          <label class="custom-control-label" for="fddsf">PC</label>
+                          <input type="checkbox" class="custom-control-input teamChecks" id="checkPC" checkeda>
+                          <label class="custom-control-label" for="checkPC">PC</label>
                         </div>
                       </div>
                     </div>
@@ -211,11 +211,11 @@
                       <div class="form-row">
                         <div class="col">
                           <label for="inputEmail4">Start Date</label>
-                          <input type="date" class="form-control" placeholder="First name">
+                          <input type="date" class="form-control rangeDate" id="startDate">
                         </div>
                         <div class="col">
                           <label for="inputEmail4">End Date</label>
-                          <input type="date" class="form-control" placeholder="Last name">
+                          <input type="date" class="form-control rangeDate" id="endDate">
                         </div>
                       </div>
                       
@@ -227,21 +227,28 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-block btn-success">Apply</button>
+                    <button type="submit" class="btn btn-block btn-success disabled" disabled id="applyFilter" style="cursor: no-drop">Apply</button>
 
                   </div>
 
                 </div>
               </div>
+<!-- 
+              <div class="alert alert-secondary mt-3" role="alert">
+                <h4 class="alert-heading">Sorry, Nothing Data!</h4>
+                <p>Please check at your filter date, maybe have a small wrong.</p>
+                <hr>
+                <p class="mb-0">Any question about this : devs@poscoictindonesia.co.id</p>
+              </div> -->
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
+              <div class="card border-left-success shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Healthly Employees (Today)</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Healthly Employees (Today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_good }} of {{count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
@@ -254,11 +261,11 @@
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employees (Today)</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Sick Employees (Today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_sick }} of {{count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
@@ -271,11 +278,11 @@
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card border-left-warning shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Leave Home (Today)</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Leave Home (Today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">12 of 424</div>
                     </div>
                     <div class="col-auto">
@@ -285,31 +292,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Check Daily Health Employees</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $progress }}%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $progress }}%" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -335,11 +317,16 @@
 
             <div class="col-md-12 mb-4">
               <div class="card shadow">
-                <div class="card-body overflow-auto">
-                  <h5 class="text-center mb-4 text-dark"><i class="fas fa-list-alt"></i> Health condition and Visit place of Employees and Families</h5>
+                <div class="card-body overflow-auto" id="loadPage">
+                  <h5 class="text-center mb-2 text-dark"><i class="fas fa-list-alt"></i> Health condition and Visit place of Employees and Families</h5>
+
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+                  </div>
+                  <code class="text-right m-0 mt-1 mb-3 text-muted d-block">On Progress ..</code>
                   <table class="table table-bordered table-sm text-dark ">
                     <thead>
-                      <tr style="background: #E5F8FF">
+                      <tr style="background: #E5F8FF"> 
                         <th scope="col" class="text-center align-middle" rowspan="2" width="25%">Team</th>
                         <th scope="col" class="text-center align-middle" rowspan="2">Submit</th>
                         <th scope="col" class="text-center align-middle" rowspan="2">No Employees</th>
@@ -360,7 +347,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark">INFRA</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail">INFRA</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -374,7 +361,7 @@
                         <td class="text-center">0</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark">IT</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail">PC</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -388,7 +375,7 @@
                         <td class="text-center">0</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#" class="text-dark">MES</a></th>
+                        <th scope="row"><a href="#" class="text-dark detail">MES</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -527,11 +514,36 @@
   <script src="{{ asset('sb2/js/sb-admin-2.min.js') }}"></script>
 
   <script>
+    // Icon toggle filter
     $('#filterSet').click(function(e){
       $('#filterForm').slideToggle();
       $("i", this).toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
-      // $("i", this).removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-up");
     });
+    // Validate filter for apply
+    $('.teamChecks').click(function(){
+      if ($('.teamChecks').is(":checked") && $('#startDate').val() != '' && $('#endDate').val() != '') {
+        $('#applyFilter').removeAttr('disabled').removeClass('disabled').css('cursor', 'pointer');
+      } else {
+        $('#applyFilter').attr('disabled','disabled').addClass('disabled').css('cursor','no-drop');
+      }
+    });
+    $('.rangeDate').change(function(){
+      if ($('#startDate').val() != '' && $('#endDate').val() != '' && $('.teamChecks').is(":checked")) {
+        $('#applyFilter').removeAttr('disabled').removeClass('disabled').css('cursor', 'pointer');
+      } else {
+        $('#applyFilter').attr('disabled','disabled').addClass('disabled').css('cursor','no-drop');
+      }
+    });
+
+    // Detail of teams at tables
+    $('.detail').click(function(e){
+      e.preventDefault();
+      $('#loadPage').text('Memuat ...');
+      $.get("{{ url('dashboard/healthempdetail') }}", function(html_string){
+         $('#loadPage').html(html_string);
+      },'html'); 
+    });
+
   </script>
 </body>
 </html>
