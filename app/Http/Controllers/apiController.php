@@ -67,7 +67,7 @@ class apiController extends Controller
     //    Show data employe order by emp_id
     public function show(User $user, $emp_id)
     {
-        $getemp = User::with(['UserReport', 'Family','FamilyReport'])
+        $getemp = User::with(['UserReport', 'Family', 'FamilyReport'])
             ->where('emp_id', $emp_id)
             ->get();
         return response()->json($getemp, 200);
@@ -111,13 +111,15 @@ class apiController extends Controller
                 'temperature' => $request->temperature,
                 'visiting' => $request->visiting,
                 'gps_location' => $request->gps_location,
+                'visit_oth_city' => $request->visit_oth_city,
+
             ]
         );
 
         if (!$get_check) {
-               return response()->json(['Error' => 'Record Error, Try Again!'], 401);
-            }
-            return response()->json(['Success' => 'Record Succesfully!'], 201);
+            return response()->json(['Error' => 'Record Error, Try Again!'], 401);
+        }
+        return response()->json(['Success' => 'Record Succesfully!'], 201);
     }
 
     // check employee view
@@ -129,41 +131,38 @@ class apiController extends Controller
         return response()->json($getemp, 200);
     }
 
-     // Family's symptomp new
-     public function famcheck(Request $request)
-     {
-         $get_check = FamilyReport::updateOrCreate(
-             [
-                 'emp_id' => $request->emp_id,
-                 'name' => $request->name,
-                 'time_reporting' => date('Y-m-d'), //1 hari sekali, selain itu di update. nanti get data kapan dia updatenya pake updated_at
-             ],
-             [
-                 'cough' => $request->cough,
-                 'fever' => $request->fever,
-                 'flue' => $request->flue,
-                 'temperature' => $request->temperature,
-                 'visiting' => $request->visiting,
-             ]
-         );
+    // Family's symptomp new
+    public function famcheck(Request $request)
+    {
+        $get_check = FamilyReport::updateOrCreate(
+            [
+                'emp_id' => $request->emp_id,
+                'name' => $request->name,
+                'time_reporting' => date('Y-m-d'), //1 hari sekali, selain itu di update. nanti get data kapan dia updatenya pake updated_at
+            ],
+            [
+                'cough' => $request->cough,
+                'fever' => $request->fever,
+                'flue' => $request->flue,
+                'temperature' => $request->temperature,
+                'visiting' => $request->visiting,
+                'visit_oth_city' => $request->visit_oth_city,
+            ]
+        );
 
-         if (!$get_check) {
-                return response()->json(['Error' => 'Record Error, Try Again!'], 401);
-             }
-             return response()->json(['Success' => 'Record Succesfully!'], 201);
-     }
-
-
-     // View Symptom Family's Employe
-     public function famcheckshow($emp_id)
-     {
-         $getemp = FamilyReport::find($emp_id)
-         ->with(['User'])
-         ->get();
-         return response()->json($getemp, 200);
-     }
+        if (!$get_check) {
+            return response()->json(['Error' => 'Record Error, Try Again!'], 401);
+        }
+        return response()->json(['Success' => 'Record Succesfully!'], 201);
+    }
 
 
-
-
+    // View Symptom Family's Employe
+    public function famcheckshow($emp_id)
+    {
+        $getemp = FamilyReport::find($emp_id)
+            ->with(['User'])
+            ->get();
+        return response()->json($getemp, 200);
+    }
 }
