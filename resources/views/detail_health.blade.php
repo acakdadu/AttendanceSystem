@@ -37,12 +37,12 @@
 
             <td class="text-center align-middle" style="font-size: 12px;">
                 @if ($report_status == 1 )
-                <i class="far fa-circle">Y</i>
+                <i class="far fa-circle"></i>
                 @else
-                <i class="far fa-user">X</i>
+                <i class="far fa-close"></i>
                 @endif
             </td>
-            
+
             <td class="text-center">{{$total_family}}</td>
 
             @foreach ($team['UserReport'] as $userreport)

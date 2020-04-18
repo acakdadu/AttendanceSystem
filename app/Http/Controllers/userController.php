@@ -58,7 +58,8 @@ class userController extends Controller
                 }
             }
             return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
-        } elseif ($call === 'pc') {
+        }
+        elseif ($call === 'pc') {
             $name = 'Team pc';
             $team = User::where('team', 'like', '%p/c%')
                 ->with(['UserReport', 'Family', 'FamilyReport'])
