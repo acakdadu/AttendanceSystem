@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 class userController extends Controller
 {
 
-
     public function dashboard()
     {
         // All Employee, data sick, healthy and report time
@@ -35,10 +34,76 @@ class userController extends Controller
         return view('/dashboard', (compact(['totalemp', 'healthyemp_sick', 'healthyemp_good', 'progress'])));
     }
 
-    public function healthempdetail()
+    public function healthempdetail($call)
     {
-        return view('/detail_health');
+        // INFRA
+        if ($call === 'infra') {
+            $name = 'Team Infra';
+            $team = User::where('team', 'like', '%infra%')
+                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->get();
+            $total = $team->count();
+            $total_family = $team->count('Family');
+
+            foreach ($team as $UReport) {
+                foreach ($UReport['UserReport'] as $userreport) {
+                    $report_submit = substr($userreport['report_time'], 0, 10);
+                    $today = date('Y-m-d');
+
+                    if ($report_submit == $today) {
+                        $report_status = 1;
+                    } else {
+                        $report_status = 0;
+                    }
+                }
+            }
+            return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
+        } elseif ($call === 'pc') {
+            $name = 'Team pc';
+            $team = User::where('team', 'like', '%p/c%')
+                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->get();
+            $total = $team->count();
+            $total_family = $team->count('Family');
+
+            foreach ($team as $UReport) {
+                foreach ($UReport['UserReport'] as $userreport) {
+                    $report_submit = substr($userreport['report_time'], 0, 10);
+                    $today = date('Y-m-d');
+
+                    if ($report_submit == $today) {
+                        $report_status = 1;
+                    } else {
+                        $report_status = 0;
+                    }
+                }
+            }
+            return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
+        } elseif ($call === 'mes') {
+            $name = 'Team mes';
+            $team = User::where('team', 'like', '%mes%')
+                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->get();
+            $total = $team->count();
+            $total_family = $team->count('Family');
+
+            foreach ($team as $UReport) {
+                foreach ($UReport['UserReport'] as $userreport) {
+                    $report_submit = substr($userreport['report_time'], 0, 10);
+                    $today = date('Y-m-d');
+
+                    if ($report_submit == $today) {
+                        $report_status = 1;
+                    } else {
+                        $report_status = 0;
+                    }
+                }
+            }
+            return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
+        }
     }
+
+
 
     public function employees()
     {
@@ -47,6 +112,58 @@ class userController extends Controller
         // $dataemp = User::all();
         return view('/employees', (compact(['dataemp', 'totalfamily'])));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // GENEREATE RESET PASSWORD => EMPM_ID
     public function generate()
