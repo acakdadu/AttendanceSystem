@@ -39,25 +39,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function level()
-    {
-        $memlevel = $this->level;
-        if ($memlevel == '0') {
-            return 'TEAM MEMBER 0';
-        } elseif ($memlevel == '1') {
-            return 'TEAM MEMBER 1';
-        } else {
-            return 'TEAM MEMBER 2';
-        }
-    }
-
     public function Family()
     {
-        return $this->hasMany(Family::class, 'emp_id', 'emp_id');
-    }
-    public function UserReport()
-    {
-        return $this->hasMany(UserReport::class, 'emp_id', 'emp_id');
+        return $this->hasMany(Family::class, 'emp_id');
     }
 
+    public function UserReport()
+    {
+        return $this->hasMany(UserReport::class, 'emp_id');
+    }
 }

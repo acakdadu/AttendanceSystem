@@ -40,7 +40,7 @@ class userController extends Controller
         if ($call === 'infra') {
             $name = 'Team Infra';
             $team = User::where('team', 'like', '%infra%')
-                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->with(['UserReport', 'Family'])
                 ->get();
             $total = $team->count();
             $total_family = $team->count('Family');
@@ -58,11 +58,10 @@ class userController extends Controller
                 }
             }
             return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
-        }
-        elseif ($call === 'pc') {
+        } elseif ($call === 'pc') {
             $name = 'Team pc';
             $team = User::where('team', 'like', '%p/c%')
-                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->with(['UserReport', 'Family'])
                 ->get();
             $total = $team->count();
             $total_family = $team->count('Family');
@@ -81,11 +80,10 @@ class userController extends Controller
                 }
             }
             return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
-            
         } elseif ($call === 'mes') {
             $name = 'Team mes';
             $team = User::where('team', 'like', '%mes%')
-                ->with(['UserReport', 'Family', 'FamilyReport'])
+                ->with(['UserReport', 'Family'])
                 ->get();
             $total = $team->count();
             $total_family = $team->count('Family');

@@ -11,7 +11,7 @@
 </div>
 <table class="table table-bordered table-sm text-dark table-hover">
     <thead>
-        <tr style="background: {{ ($total > 0) ? '#E5F8FF' : '#d9d9d9' }}"> 
+        <tr style="background: {{ ($total > 0) ? '#E5F8FF' : '#d9d9d9' }}">
             <th scope="col" class="text-center align-middle" rowspan="2">No.</th>
             <th scope="col" class="text-center align-middle" rowspan="2" width="25%">Name of Employees</th>
             <th scope="col" class="text-center align-middle" rowspan="2">Submit</th>
@@ -32,8 +32,9 @@
     </thead>
     <tbody>
         @if ($total > 0)
+            {{-- TINGGAL INI DOANG, $EMPLOYEES DAPETNYA DARI MANA KALI. KONTOLLER USER GAADA YANG COMPACT EMPLYEES --}}
             @foreach ($employees as $employee)
-            <tr style="background: 
+            <tr style="background:
             @IF ($employee->m_fever > 0 || $employee->m_cough > 0 || $employee->m_flue > 0 || $employee->f_fever > 0 || $employee->f_cough > 0 || $employee->f_flue > 0)
             #ffe0e0
             @ELSEIF ($employee->submit)
@@ -55,7 +56,7 @@
                     <i class="fas fa-times"></i>
                     @endif
                 </td>
-                
+
 
                 <td class="text-center">{{ ($employee->m_fever) ? 'Yes' : 'No' }}</td>
                 <td class="text-center">{{ ($employee->m_cough) ? 'Yes' : 'No' }}</td>
@@ -71,13 +72,13 @@
 
                 <td class="text-center">{{ $empFamilies[$loop->index]->noFamilies }}</td>
 
-                <td class="text-center">{{ $submit) ? 'Yes' : 'Yes; M, F, B' }}</td>
-                <td class="text-center">{{ $submit) ? 'Yes' : 'No' }}</td>
+                <td class="text-center">{{ $submit ? 'Yes' : 'Yes; M, F, B' }}</td>
                 <td class="text-center">{{ $submit ? 'Yes' : 'No' }}</td>
-                
-                
+                <td class="text-center">{{ $submit ? 'Yes' : 'No' }}</td>
+
+
                 <td class="text-center align-middle" style="font-size: 12px;">
-                    @if $submit                    <i class="far fa-circle"></i>
+                    @if ($submit)                    <i class="far fa-circle"></i>
                     @else
                     -
                     @endif
