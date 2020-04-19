@@ -12,14 +12,9 @@ class FamilyReport extends Model
 
     protected $hidden =['emp_id','created_at','updated_at'];
 
-    public function User()
-    {
-        return $this->belongsTo(User::class, 'emp_id', 'emp_id');
-    }
-
     public function Family()
     {
-        return $this->belongsTo(Family::class, 'emp_id', 'emp_id');
+        return $this->belongsTo(Family::class, 'id', 'family_id');
     }
 
 }

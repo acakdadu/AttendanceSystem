@@ -66,6 +66,7 @@ class userController extends Controller
                 ->get();
             $total = $team->count();
             $total_family = $team->count('Family');
+            $report_status = 0;
 
             foreach ($team as $UReport) {
                 foreach ($UReport['UserReport'] as $userreport) {
@@ -80,6 +81,7 @@ class userController extends Controller
                 }
             }
             return view('/detail_health', compact(['team', 'total', 'name', 'total_family', 'report_status']));
+            
         } elseif ($call === 'mes') {
             $name = 'Team mes';
             $team = User::where('team', 'like', '%mes%')

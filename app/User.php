@@ -55,12 +55,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Family::class, 'emp_id', 'emp_id');
     }
-
-    public function FamilyReport()
-    {
-        return $this->hasMany(FamilyReport::class, 'emp_id', 'emp_id');
-    }
-
     public function UserReport()
     {
         return $this->hasMany(UserReport::class, 'emp_id', 'emp_id');

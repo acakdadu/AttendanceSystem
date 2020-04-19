@@ -244,11 +244,11 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Healthly Employees (Today)</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Healthly Employees (Today)</div> <!-- style="/* color: #b0b0b0 !important */" -->
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_good }} of {{count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
@@ -261,11 +261,11 @@
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Sick Employees (Today)</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employees (Today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $healthyemp_sick }} of {{count($totalemp)}}</div>
                     </div>
                     <div class="col-auto">
@@ -278,11 +278,11 @@
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2" style="/* border-color: #b0b0b0 !important */">
+              <div class="card border-left-warning shadow h-100 py-2"> <!--  style="/* border-color: #b0b0b0 !important */" -->
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" style="/* color: #b0b0b0 !important */">Leave Home (Today)</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Leave Home (Today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">12 of 424</div>
                     </div>
                     <div class="col-auto">
@@ -534,6 +534,10 @@
         $('#applyFilter').attr('disabled','disabled').addClass('disabled').css('cursor','no-drop');
       }
     });
+    
+    $.get("{{ url('dashboard/healthempdetail/pc') }}", function(html_string){
+        $('#loadPage').html(html_string);
+    },'html');
 
     // Detail of teams at tables
     $('.detail').click(function(e){
