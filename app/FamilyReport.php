@@ -14,6 +14,6 @@ class FamilyReport extends Model
 
     public function Family()
     {
-        return $this->belongsTo(Family::class, 'family_id');
+        return $this->belongsTo(Family::class, 'id');
     }
 }
