@@ -195,15 +195,15 @@
                       <div class="form-group">
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input teamChecks" id="checkInfra" checkeda>
-                          <label class="custom-control-label" for="checkInfra">Infra</label>
+                          <label class="custom-control-label" for="checkInfra" checked>Infra</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input teamChecks" id="checkMes" checkeda>
-                          <label class="custom-control-label" for="checkMes">MES</label>
+                          <label class="custom-control-label" for="checkMes" checked>MES</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input teamChecks" id="checkPC" checkeda>
-                          <label class="custom-control-label" for="checkPC">PC</label>
+                          <label class="custom-control-label" for="checkPC" checked>PC</label>
                         </div>
                       </div>
                     </div>
@@ -535,9 +535,9 @@
       }
     });
     
-    $.get("{{ url('dashboard/healthempdetail/pc') }}", function(html_string){
-        $('#loadPage').html(html_string);
-    },'html');
+    // $.get("{{ url('dashboard/healthempdetail/pc') }}", function(html_string){
+    //     $('#loadPage').html(html_string);
+    // },'html');
 
     // Detail of teams at tables
     $('.detail').click(function(e){

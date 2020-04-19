@@ -1,11 +1,18 @@
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-arrow-left fa-sm text-white-50"></i>Kembali</a>
+<div class="row">
+    <div class="col-md-4">
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-arrow-left fa-sm text-white-50"></i>Kembali</a>
+    </div>
+    <div class="col-md-4 text-center text-dark">
+        <h4>{{ $name }}</h4>
+    </div>
+</div>
 
 <div class="text-center">
     <h5 class="text-dark mb-3">
         <i class="fas fa-list-alt"></i>
         Health condition and Visit place of Employees and Families</h5>
     <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: {{ (($progressReport/count($employees))*100) }}%" aria-valuenow="{{ (($progressReport/count($employees))*100) }}" aria-valuemin="0" aria-valuemax="100">{{ (($progressReport/count($employees))*100) }}%</div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: {{ round(($progressReport/count($employees))*100) }}%" aria-valuenow="{{ round(($progressReport/count($employees))*100) }}" aria-valuemin="0" aria-valuemax="100">{{ round(($progressReport/count($employees))*100) }}%</div>
     </div>
     <code class="text-right m-0 mb-2 mt-1 text-muted d-block">[{{ $progressReport}} of {{ count($employees) }} ] On Progress ..</code>
 </div>
@@ -32,14 +39,12 @@
     </thead>
     <tbody>
         @if ($total > 0)
-            {{-- TINGGAL INI DOANG, $EMPLOYEES DAPETNYA DARI MANA KALI. KONTOLLER USER GAADA YANG COMPACT EMPLYEES --}}
             @foreach ($employees as $employee)
             <tr style="background:
             @IF ($employee->m_fever > 0 || $employee->m_cough > 0 || $employee->m_flue > 0 || $employee->f_fever > 0 || $employee->f_cough > 0 || $employee->f_flue > 0)
             #ffe0e0
             @ELSEIF ($employee->submit)
             #f0ffe0
-
             @ENDIF
             ">
                 <th scope="row" class="text-center align-middle">
@@ -58,27 +63,26 @@
                 </td>
 
 
-                <td class="text-center">{{ ($employee->m_fever) ? 'Yes' : 'No' }}</td>
                 <td class="text-center">{{ ($employee->m_cough) ? 'Yes' : 'No' }}</td>
+                <td class="text-center">{{ ($employee->m_fever) ? 'Yes' : 'No' }}</td>
                 <td class="text-center">{{ ($employee->m_flue) ? 'Yes' : 'No' }}</td>
 
                 <td class="text-center align-middle" style="font-size: 12px;">
                     @if ($employee->m_voc)
-                    {{ $employee->visiting }}
+                    {{ $employee->m_visit }}
                     @else
                     -
                     @endif
                 </td>
 
                 <td class="text-center">{{ $empFamilies[$loop->index]->noFamilies }}</td>
-
-                <td class="text-center">{{ $submit ? 'Yes' : 'Yes; M, F, B' }}</td>
-                <td class="text-center">{{ $submit ? 'Yes' : 'No' }}</td>
-                <td class="text-center">{{ $submit ? 'Yes' : 'No' }}</td>
-
+                <td class="text-center">{{ ($employee->f_cough > 0) ? 'Yes' : 'No' }}</td>
+                <td class="text-center">{{ ($employee->f_fever > 0) ? 'Yes' : 'No' }}</td>
+                <td class="text-center">{{ ($employee->f_flue) > 0 ? 'Yes' : 'No' }}</td>
 
                 <td class="text-center align-middle" style="font-size: 12px;">
-                    @if ($submit)                    <i class="far fa-circle"></i>
+                    @if ($employee->f_voc)
+                    {{ $employee->f_visit }}
                     @else
                     -
                     @endif
