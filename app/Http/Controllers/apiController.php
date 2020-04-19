@@ -67,7 +67,7 @@ class apiController extends Controller
     //    Show data employe order by emp_id
     public function show(User $user, $emp_id)
     {
-        $getemp = User::with(['UserReport', 'Family', 'FamilyReport'])
+        $getemp = User::with(['UserReport', 'Family', 'Family.FamilyReport'])
             ->where('emp_id', $emp_id)
             ->get();
         return response()->json($getemp, 200);

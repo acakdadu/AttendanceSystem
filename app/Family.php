@@ -22,6 +22,6 @@ class Family extends Model
 
     public function FamilyReport()
     {
-        return $this->hasMany(FamilyReport::class, 'id');
+        return $this->hasMany(FamilyReport::class, 'family_id');
     }
 }
