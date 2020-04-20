@@ -43,7 +43,7 @@ class userController extends Controller
         if ($teamDetail == 'infra'){
             $teamDetail = 'INFRA';
         } elseif ($teamDetail == 'pc') {
-            $teamDetail = 'p/c';
+            $teamDetail = 'P/C';
         } elseif ($teamDetail == 'mes') {
             $teamDetail = 'MES';
         }
