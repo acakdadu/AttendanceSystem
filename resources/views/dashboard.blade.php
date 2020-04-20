@@ -349,9 +349,10 @@
                     </thead>
                     <tbody>
                       <tr>
+
                         <th scope="row"><a href="#" class="text-dark detail" page="infra">INFRA</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
-                        <td class="text-center">0</td>
+                        <td class="text-center">{{$infra_total}}</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -365,7 +366,7 @@
                       <tr>
                         <th scope="row"><a href="#" class="text-dark detail" page="pc">PC</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
-                        <td class="text-center">0</td>
+                        <td class="text-center">{{$pc_total}}</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -379,7 +380,7 @@
                       <tr>
                         <th scope="row"><a href="#" class="text-dark detail" page="mes">MES</a></th>
                         <td class="text-center align-middle" style="font-size: 12px;"><i class="far fa-circle"></i></td>
-                        <td class="text-center">0</td>
+                        <td class="text-center">{{$mes_total}}</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
                         <td class="text-center">0</td>
@@ -394,7 +395,11 @@
                   </table>
                   <div class="row">
                     <div class="col-md-6">
-                      <p class="font-italic text-info">*Last updated: 23:50 17/04/2020</p>
+                      <p class="font-italic text-info">*Last updated:
+                        @foreach ($lastupdate as $lastupdate)
+                        {{$lastupdate}}
+                        @endforeach
+                    </p>
                     </div>
                     <div class="col-md-6 text-right">
                       <a href="#"id="tombol" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export to Excel</a>
@@ -506,7 +511,8 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('sb2/vendor/jquery/jquery.min.js') }}"></script>
+  {{-- <script src="{{ asset('dist/jquery.min.js') }}"></script> --}}
   <script src="{{ asset('sb2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   <script src="{{ asset('dist/jquery.table2excel.js')}}"></script>
@@ -524,6 +530,7 @@
       $('#filterForm').slideToggle();
       $("i", this).toggleClass("fa-chevron-circle-up fa-chevron-circle-down");
     });
+
     // Validate filter for apply
     $('.teamChecks').click(function(){
       if ($('.teamChecks').is(":checked") && $('#startDate').val() != '' && $('#endDate').val() != '') {
@@ -532,6 +539,7 @@
         $('#applyFilter').attr('disabled','disabled').addClass('disabled').css('cursor','no-drop');
       }
     });
+
     $('.rangeDate').change(function(){
       if ($('#startDate').val() != '' && $('#endDate').val() != '' && $('.teamChecks').is(":checked")) {
         $('#applyFilter').removeAttr('disabled').removeClass('disabled').css('cursor', 'pointer');
@@ -552,6 +560,15 @@
          $('#loadPage').html(html_string);
       },'html');
     });
+
+
+
+	$('#back').click(function(){
+		parent.history.back();
+		return false;
+	});
+
+
 
     $('#tombol').click(function() {
        $('#table').table2excel({

@@ -32,7 +32,12 @@
 
 
 
+ <!-- Bootstrap core JavaScript-->
+ <script src="{{ asset('sb2/vendor/jquery/jquery.min.js') }}"></script>
+ {{-- <script src="{{ asset('dist/jquery.min.js') }}"></script> --}}
+ <script src="{{ asset('sb2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+ <script src="{{ asset('dist/jquery.table2excel.js')}}"></script>
   <script>
 var nowDate		= new Date();
 var nowDay		= ((nowDate.getDate().toString().length) == 1) ? '0'+(nowDate.getDate()) : (nowDate.getDate());

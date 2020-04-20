@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-arrow-left fa-sm text-white-50"></i>Kembali</a>
+    <a href="{{url('')}}" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-arrow-left fa-sm text-white-50"></i>Kembali</a>
     </div>
     <div class="col-md-4 text-center text-dark" >
         <h4 id="namecok">{{ $name }}</h4>
