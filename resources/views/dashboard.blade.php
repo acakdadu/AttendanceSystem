@@ -10,6 +10,7 @@
 
   <title>AppName - Dashboard</title>
 
+
   <link rel="icon" type="image/png" href="http://poscoictindonesia.co.id/img/icons/favicon.ico">
 
   <!-- Custom fonts for this template-->
@@ -324,7 +325,8 @@
                     <div class="progress-bar bg-success" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
                   </div>
                   <code class="text-right m-0 mt-1 mb-3 text-muted d-block">On Progress ..</code>
-                  <table class="table table-bordered table-sm text-dark ">
+                  <table class="table table-bordered table-sm text-dark" id="table">
+{{-- <table class="table2excel" data-tableName="Test Table 1"> --}}
                     <thead>
                       <tr style="background: #E5F8FF">
                         <th scope="col" class="text-center align-middle" rowspan="2" width="25%">Team</th>
@@ -395,7 +397,7 @@
                       <p class="font-italic text-info">*Last updated: 23:50 17/04/2020</p>
                     </div>
                     <div class="col-md-6 text-right">
-                      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export to Excel</a>
+                      <a href="#"id="tombol" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export to Excel</a>
                     </div>
                   </div>
                 </div>
@@ -504,14 +506,17 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('sb2/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('dist/jquery.min.js') }}"></script>
   <script src="{{ asset('sb2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <script src="{{ asset('dist/jquery.table2excel.js')}}"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="{{ asset('sb2/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('sb2/js/sb-admin-2.min.js') }}"></script>
+
 
   <script>
     // Icon toggle filter
@@ -534,7 +539,7 @@
         $('#applyFilter').attr('disabled','disabled').addClass('disabled').css('cursor','no-drop');
       }
     });
-    
+
     // $.get("{{ url('dashboard/healthempdetail/pc') }}", function(html_string){
     //     $('#loadPage').html(html_string);
     // },'html');
@@ -547,6 +552,19 @@
          $('#loadPage').html(html_string);
       },'html');
     });
+
+    $('#tombol').click(function() {
+       $('#table').table2excel({
+        name: "Master Employee Health Result",
+        filename: "MASTER Employee Health Result " + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+        fileext: ".xls",
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true
+
+       });
+    });
+
 
   </script>
 </body>

@@ -1,9 +1,12 @@
+@extends('master/body')
+@section('content')
+
 <div class="row">
     <div class="col-md-4">
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-arrow-left fa-sm text-white-50"></i>Kembali</a>
     </div>
-    <div class="col-md-4 text-center text-dark">
-        <h4>{{ $name }}</h4>
+    <div class="col-md-4 text-center text-dark" >
+        <h4 id="namecok">{{ $name }}</h4>
     </div>
 </div>
 
@@ -16,7 +19,7 @@
     </div>
     <code class="text-right m-0 mb-2 mt-1 text-muted d-block">[{{ $progressReport}} of {{ count($employees) }} ] On Progress ..</code>
 </div>
-<table class="table table-bordered table-sm text-dark table-hover">
+<table id="table" class="table table-bordered table-sm text-dark table-hover">
     <thead>
         <tr style="background: {{ ($total > 0) ? '#E5F8FF' : '#d9d9d9' }}">
             <th scope="col" class="text-center align-middle" rowspan="2">No.</th>
@@ -106,9 +109,10 @@
     </div>
     <div class="col-md-6 text-right">
         @if ($total > 0)
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+        <a href="#" id="tombol" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i>
         Export to Excel</a>
         @endif
     </div>
 </div>
+@endsection

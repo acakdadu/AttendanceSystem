@@ -19,6 +19,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/healthempdetail/{call}', 'userController@healthempdetail');
     // Data
     Route::get('/dashboard/employees', 'userController@employees');
-    // Data
-    Route::get('/dashboard/export', 'userController@export');
+    // Data EXCEL
+    Route::get('/dashboard/healthempdetail/export', 'userController@export');
 });

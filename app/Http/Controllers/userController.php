@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 class userController extends Controller
 {
@@ -36,7 +38,7 @@ class userController extends Controller
 
     public function healthempdetail($call)
     {
-        // Check Team Detail 
+        // Check Team Detail
         $teamDetail = $call;
         if ($teamDetail == 'infra'){
             $teamDetail = 'INFRA';
@@ -46,7 +48,7 @@ class userController extends Controller
             $teamDetail = 'MES';
         }
 
-        $name = 'Team pc';
+        $name = 'TEAM-'.$teamDetail;
         $team = User::where('team', 'like', "%$teamDetail%")
             ->with(['UserReport', 'Family'])
             ->get();
@@ -57,21 +59,21 @@ class userController extends Controller
         // Data Employee
         $employees = DB::select('SELECT emp_id,name FROM mst_employee WHERE team = "'.$teamDetail.'"');
 
-        // Group by emp_id for personal report 
+        // Group by emp_id for personal report
         $empCollect = '';
         $i = 0;
         foreach ($employees as $value) {
             $empCollect .= $value->emp_id.',';
-            
+
             // defualt value for column
             $employees[$i]->m_visit = $employees[$i]->report_time = $employees[$i]->submit = NULL;
             $employees[$i]->f_voc = $employees[$i]->f_flue = $employees[$i]->f_fever = $employees[$i]->f_cough = $employees[$i]->m_flue = $employees[$i]->m_fever = $employees[$i]->m_cough = $employees[$i]->m_voc = 0;
             $employees[$i]->f_visit = null;
             $i++;
         }
-        
+
         // Get Data Family by Employee ID
-        for ($i=0; $i < count($employees); $i++) { 
+        for ($i=0; $i < count($employees); $i++) {
             $empFamily = DB::select('SELECT id FROM mst_family_member WHERE emp_id = "'.$employees[$i]->emp_id.'"');
             $families = '';
             if (count($empFamily) > 0) {
@@ -86,9 +88,9 @@ class userController extends Controller
 
         // Health Report Employee
         $empHealth = DB::select('SELECT emp_id,report_time,cough,fever,flue,visiting,visit_oth_city FROM tr_employee_reporting WHERE emp_id IN ('.substr($empCollect, 0, (strlen($empCollect)-1)).')');
-        
-        for ($i=0; $i < count($employees); $i++) { 
-            for ($j=0; $j < count($empHealth); $j++) { 
+
+        for ($i=0; $i < count($employees); $i++) {
+            for ($j=0; $j < count($empHealth); $j++) {
                 if ($employees[$i]->emp_id == $empHealth[$j]->emp_id){
                     $employees[$i]->submit = 1;
                     $employees[$i]->report_time = $empHealth[$j]->report_time;
@@ -97,11 +99,11 @@ class userController extends Controller
                     $employees[$i]->m_cough = $empHealth[$j]->cough;
                     $employees[$i]->m_fever = $empHealth[$j]->fever;
                     $employees[$i]->m_flue = $empHealth[$j]->flue;
-                } 
+                }
             }
         }
         // Health Report Family by Employee ID
-        for ($i=0; $i < count($employees); $i++) { 
+        for ($i=0; $i < count($employees); $i++) {
             $families_id = '';
             if ($employees[$i]->families == null) {
                 $families_id = 'NULL';
@@ -113,10 +115,10 @@ class userController extends Controller
 
             $countCough = $countFever = $countFlue = 20;
             $visitings = null;
-            for ($j=0; $j < count($famHealth); $j++) { 
+            for ($j=0; $j < count($famHealth); $j++) {
                 if ($famHealth[$j]->cough == 1){
                     $employees[$i]->f_cough = $employees[$i]->f_cough + 1;
-                } 
+                }
                 if ($famHealth[$j]->visit_oth_city == 1){
                     $visitings .= $famHealth[$j]->visiting.',';
                     $employees[$i]->f_voc = 1;
@@ -127,7 +129,7 @@ class userController extends Controller
         }
 
         $empFamilies = DB::select('SELECT COUNT(emp.emp_id) noFamilies FROM mst_employee emp LEFT JOIN mst_family_member f ON f.emp_id = emp.emp_id GROUP BY emp.emp_id ORDER BY emp.emp_id');
-        
+
         // $progressReport = DB::select('SELECT * FROM tr_employee_reporting WHERE emp_id IN ('.$empCollect.') AND report_time LIKE "2020-04-19%"');
         // $progressReport = count($progressReport);
         $progressReport = 0;
@@ -136,8 +138,6 @@ class userController extends Controller
 
     }
 
-
-
     public function employees()
     {
         $dataemp = User::with(['Family'])->get();
@@ -145,10 +145,6 @@ class userController extends Controller
         // $dataemp = User::all();
         return view('/employees', (compact(['dataemp', 'totalfamily'])));
     }
-
-
-
-
 
 
 
